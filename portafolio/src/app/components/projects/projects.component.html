@@ -1,0 +1,23 @@
+<section class="projects-section py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold section-title">🚀 Mis Proyectos</h2>
+    <p class="text-center lead">Aquí algunos de los proyectos en los que he trabajado</p>
+
+    <div class="row mt-4">
+      <div *ngFor="let project of projects" class="col-lg-4 col-md-6 mb-4">
+        <div class="card project-card">
+          <div class="card-img-wrapper">
+            <img [src]="project.image" class="card-img-top" alt="{{ project.title }}">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">{{ project.description }}</p>
+            <a [href]="project.link" class="btn btn-glow" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Ver Proyecto
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

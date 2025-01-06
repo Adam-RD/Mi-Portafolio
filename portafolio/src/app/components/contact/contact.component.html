@@ -1,0 +1,68 @@
+<section class="contact-section py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold">📩 Contáctame</h2>
+    <p class="text-center lead">Déjame un mensaje y te responderé lo antes posible.</p>
+
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-6">
+        <form (ngSubmit)="sendMessage()">
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" [(ngModel)]="contact.name" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" [(ngModel)]="contact.email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Mensaje</label>
+            <textarea class="form-control" rows="4" [(ngModel)]="contact.message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100" [disabled]="loading">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+            Enviar Mensaje
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toasts de éxito y error -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
+    <div id="successToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          ✅ Mensaje enviado correctamente.
+        </div>
+        <button type="button" class="btn-close me-2 m-auto" (click)="success = false"></button>
+      </div>
+    </div>
+
+    <div id="errorToast" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          ❌ Error al enviar el mensaje.
+        </div>
+        <button type="button" class="btn-close me-2 m-auto" (click)="error = false"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Advertencia -->
+  <div class="modal fade" id="warningModal" tabindex="-1" aria-labelledby="warningModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-dark">
+          <h5 class="modal-title" id="warningModalLabel">⚠️ Atención</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Por favor, completa todos los campos antes de enviar el mensaje.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
